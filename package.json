@@ -1,6 +1,6 @@
 {
   "name": "reactChat",
-  "version": "v1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "browserify ./client/app.jsx -t babelify --outfile ./public/js/app.js",
