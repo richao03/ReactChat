@@ -32,7 +32,7 @@ var userNames = (function () {
     }
     return answer;
   };
-});
+
 
 
 // export function for listening to the socket
@@ -67,5 +67,5 @@ module.exports = function (socket) {
 };
 
 
-
+});
 
