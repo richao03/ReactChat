@@ -1,4 +1,3 @@
-
 // Keep track of which names are used so that there are no duplicates
 var userNames = (function () {
   var names = {};
@@ -18,7 +17,7 @@ var userNames = (function () {
       nextUserId = 1;
 
     do {
-      name = 'Battler ' + nextUserId;
+      name = 'Guest ' + nextUserId;
       nextUserId += 1;
     } while (!claim(name));
 
@@ -35,10 +34,15 @@ var userNames = (function () {
     return res;
   };
 
-
+  var free = function (name) {
+    if (names[name]) {
+      delete names[name];
+    }
+  };
 
   return {
     claim: claim,
+    free: free,
     get: get,
     getGuestName: getGuestName
   };
@@ -67,24 +71,14 @@ module.exports = function (socket) {
     });
   });
 
-  // validate a user's name change, and broadcast it on success
-  socket.on('change:name', function (data, fn) {
-    if (userNames.claim(data.name)) {
-      var oldName = name;
-      userNames.free(oldName);
-
-      name = data.name;
-      
-      socket.broadcast.emit('change:name', {
-        oldName: oldName,
-        newName: name
-      });
-
-      fn(true);
-    } else {
-      fn(false);
-    }
+    socket.on('user:typing', function (data) {
+    socket.broadcast.emit('user:typing', {
+      user: name,
+      text: data.text
+    });
   });
+
+
 
   // clean up when a user leaves, and broadcast it to other users
   socket.on('disconnect', function () {
