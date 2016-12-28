@@ -23,8 +23,11 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', socket);
 
 /* Start server */
-server.listen(3000, function (){
-  console.log('Server listening on 3 million!');
-});
+var startserver =  function (){
+ var PORT = process.env.PORT||1337;
+ server.listen(PORT, function(){
+   console.log("site ready at 1337")
+ })
+ }();
 
 module.exports = app;
