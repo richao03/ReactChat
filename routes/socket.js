@@ -65,7 +65,3 @@ module.exports = function (socket) {
     });
   });
 };
-
-
-});
-
