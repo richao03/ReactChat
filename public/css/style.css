@@ -1,0 +1,59 @@
+body {
+    background-color: #3399FF;
+    width: 600px;
+    margin: 0 auto;
+    color: white;
+}
+.messages::-webkit-scrollbar {
+
+    width: 1em;
+}
+ 
+ 
+.messages::-webkit-scrollbar-thumb {
+    border-radius:10px;
+  background-color: #3399FF;
+}
+
+.users {
+    width:120px;
+    float: right;
+    background-color: #66B2FF;
+    border-radius: 10px;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.messages {
+    overflow: auto;
+    background-color: #66B2FF;
+    width: 400px;
+    height: 500px;
+    margin: 1em;
+    border-radius: 10px;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    padding: 1em;
+}
+
+.message_form,
+.change_name_form {
+    padding-left: 1em;
+}
+
+input,
+textarea {
+    color: white;
+    width: 300px;
+    height: 20px;
+    background-color: #66B2FF;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 0px;
+    border-radius: 5px;
+    border-left: 0px;
+}
+
+input:focus {
+    outline: none !important;
+}
